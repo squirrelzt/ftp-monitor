@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/ftp/listFiles', function(req, res, next) {
-    console.log("------------------------------");
+    // console.log("------------------------------");
     // var language = req.body['language'];
     // var token = req.body['token'];
     // var returnUrl = req.body['returnUrl'];
@@ -26,7 +26,7 @@ router.post('/ftp/listFiles', function(req, res, next) {
             }, {
             "filename": "20190325.txt",
             "filePath": null,
-            "directory": true,
+            "directory": false,
             "subFiles": null
         }
         ]
