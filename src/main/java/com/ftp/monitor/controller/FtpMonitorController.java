@@ -21,8 +21,6 @@ public class FtpMonitorController {
     @RequestMapping("/listFiles")
     public List listFiles() {
         List list = ftpMonitorService.listFtpFiles();
-//        Map result = new HashMap(5);
-//        result.put("YE2019022799861", "D:/data/gold-goods-common/data/9986/2019/201902/20190227/YE2019022799861.txt");
         return list;
     }
 }
