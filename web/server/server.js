@@ -1,7 +1,9 @@
+const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const mockData = require('./mock-data');
+const favicon = require('serve-favicon');
 
 const app = express();
 const config = require('./../webpack.config.js');
@@ -12,6 +14,8 @@ const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath
 }));
+
+app.use(favicon(path.join(__dirname, '../src/entry/images/favicon.ico')));
 // app.use("/", mockData);
 
 // Serve the files on port 3000.

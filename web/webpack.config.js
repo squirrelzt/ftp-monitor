@@ -17,7 +17,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
     	new HtmlWebpackPlugin({
-            title: 'Output Management'
+			favicon:'./src/entry/images/favicon.ico',
+            title: 'FTP Monitor'
 		}),
         new ManifestPlugin(),
         new webpack.NamedModulesPlugin(),
@@ -37,7 +38,7 @@ module.exports = {
 				'css-loader'
 				]
 		},{
-			test: /\.(png|svg|jpg|gif)$/,
+			test: /\.(png|svg|jpg|gif|ico)$/,
 			use: [
 				'file-loader'
 			]
