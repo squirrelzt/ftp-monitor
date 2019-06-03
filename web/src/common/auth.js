@@ -20,7 +20,7 @@ module.exports = {
     });
   },
   getPath(){
-    return '';
-      // return 'http://localhost:8080'
+    // return '';
+      return 'http://localhost:8080'
   }
 }
