@@ -1,12 +1,12 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Nav from './../component/nav/nav.js';
 import Ftp from './../component/ftp/ftp.js';
 
 function component() {
   var element = document.createElement('pre');
-  element.innerHTML = '<div id="root"></div>';
+  element.innerHTML = '<div id="root">one</div>';
   return element;
 }
 
@@ -15,8 +15,16 @@ document.body.appendChild(element);
 
 ReactDOM.render((
   <Router>
+    <ul>
+      <li>
+        <Link to="/nav">nav</Link>
+      </li>
+      <li>
+        <Link to="/ftp">ftp</Link>
+      </li>
+    </ul>
     <div>
-      <Route exact path="/nav" component = { Nav } />
+    <Route path="/nav" component = { Nav } />
       <Route path="/ftp" component = { Ftp } />
     </div>
   </Router>
