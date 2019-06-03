@@ -15,16 +15,8 @@ document.body.appendChild(element);
 
 ReactDOM.render((
   <Router>
-    <ul>
-      <li>
-        <Link to="/nav">nav</Link>
-      </li>
-      <li>
-        <Link to="/ftp">ftp</Link>
-      </li>
-    </ul>
     <div>
-    <Route path="/nav" component = { Nav } />
+      <Route path="/nav" component = { Nav } />
       <Route path="/ftp" component = { Ftp } />
     </div>
   </Router>

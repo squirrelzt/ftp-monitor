@@ -11,24 +11,24 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-		historyApiFallback:true,
-        contentBase: './dist'
-	},
+			historyApiFallback:true,
+      contentBase: './dist'
+		},
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
     	new HtmlWebpackPlugin({
-			favicon:'./src/entry/images/favicon.ico',
-            title: 'FTP Monitor'
-		}),
+				favicon:'./src/entry/images/favicon.ico',
+							title: 'FTP Monitor'
+			}),
         new ManifestPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
 	],
     output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-	publicPath: '/'
-  },
+			filename: 'main.js',
+			path: path.resolve(__dirname, 'dist'),
+			publicPath: '/'
+		},
   module: {
 	  rules: [
 	    {
