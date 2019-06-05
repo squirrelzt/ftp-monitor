@@ -66,7 +66,12 @@ module.exports = {
 			use: [
 				'babel-loader'
 			]
-		  }
+		  }, {
+				test: /\.less%/,
+				use: [
+					'less-loader'
+				]
+			}
 		]
   }
 };
