@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import auth from './../../common/auth';
+import ajax from './../../common/ajax';
 import './css/ftp.css';
 
 class Ftp extends Component {
@@ -10,13 +11,20 @@ class Ftp extends Component {
         };
     }
     fetch(params = {}) {
-        auth.fetch('/ftp/listFiles','post',params,(result)=>{
+        // auth.fetch('/ftp/listFiles','post',params,(result)=>{
+        //     console.log("------------------");
+        //     console.log(result);
+        //     this.setState({
+        //         data: result
+        //     })
+        // });
+        ajax.axiosRequest('/ftp/listFiles','post',params,(result)=>{
             console.log("------------------");
             console.log(result);
             this.setState({
                 data: result
             })
-        });
+        })
     };
 
     componentWillMount(){
