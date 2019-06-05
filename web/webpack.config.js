@@ -24,6 +24,9 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
 	],
+	resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
     output: {
 			filename: 'main.js',
 			path: path.resolve(__dirname, 'dist'),
