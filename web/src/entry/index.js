@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Nav from './../component/nav/nav.js';
 import Ftp from './../component/ftp/ftp.js';
+import Editor from './../component/editor/editor.js';
 
 function component() {
   var element = document.createElement('pre');
@@ -18,6 +19,7 @@ ReactDOM.render((
     <div>
       <Route path="/nav" component = { Nav } />
       <Route path="/ftp" component = { Ftp } />
+      <Route path="/editor" component = { Editor } />
     </div>
   </Router>
 ),document.getElementById('root')

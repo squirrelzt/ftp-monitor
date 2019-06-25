@@ -3,6 +3,7 @@ import reqwest from 'reqwest';
 module.exports = {
   fetch(url, method, params, callback) {
     let api = this.getPath();
+    console.log(url)
     reqwest({
       url: api+url,
       method: method,
@@ -14,8 +15,12 @@ module.exports = {
         callback(result);
       },
       error: (err) => {
-        console.log(err);
-        callback({result:'1',msg:err});
+        if (err.status == 200) {
+          callback(err.response);
+        } else {
+          console.log(err);
+          callback({result:'1',msg:err});
+        }
       }
     });
   },
