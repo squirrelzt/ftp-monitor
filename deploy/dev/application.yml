@@ -28,11 +28,11 @@ spring:
         max-request-size: 1000MB
 
 ftp:
-   hostname: 127.0.0.1
+   hostname: 10.144.137.47
    port: 21
-   username: root
-   password: root
-   ftpBasePath: /home
+   username: payhadmin
+   password: DgWai2=FoCB7
+   ftpBasePath: /home/wasadmin
 
 upload:
 #   upload-path: src/main/resources/upload/images
