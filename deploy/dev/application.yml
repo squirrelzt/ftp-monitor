@@ -21,10 +21,20 @@ spring:
       connection-test-query: SELECT 1
       validation-timeout: 1000
       isolate-internal-queries: true
+  #设置最大可上传文件大小
+  servlet:
+      multipart:
+        max-file-size: 1000MB
+        max-request-size: 1000MB
 
 ftp:
    hostname: 127.0.0.1
    port: 21
    username: root
    password: root
-   ftpBasePath: /root
+   ftpBasePath: /home
+
+upload:
+#   upload-path: src/main/resources/upload/images
+    upload-path: src/main/resources/static
+#    upload-path: ./../

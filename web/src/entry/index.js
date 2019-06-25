@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Nav from './../component/nav/nav.js';
 import Ftp from './../component/ftp/ftp.js';
 import Editor from './../component/editor/editor.js';
+import Upload from './../component/editor/upload';
 
 function component() {
   var element = document.createElement('pre');
@@ -20,6 +21,7 @@ ReactDOM.render((
       <Route path="/nav" component = { Nav } />
       <Route path="/ftp" component = { Ftp } />
       <Route path="/editor" component = { Editor } />
+      <Route path="/upload" component = { Upload } />
     </div>
   </Router>
 ),document.getElementById('root')
