@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './css/editor.css';
+import RichEditor from './richeditor';
 
 class AsynUpload extends Component {
     constructor(props) {
         super();
         this.state = {
-            data: []
+            data: [],
+            inhtml:''
         };
     }
 
+    updata() {
+        this.setState({ 
+          inhtml:this.refs.editor.getData()
+        });
+        console.log('==========================');
+        console.log(this.refs.editor.getData());
+    }
     componentWillMount(){
     };
 
@@ -53,6 +62,9 @@ class AsynUpload extends Component {
                 <input className="file" key="file" name="file" type="file" 
                 accept="image/png,image/gif,image/jpeg" 
                 onChange={this.updatePromise.bind(this)}/>
+                <button onClick={ this.updata.bind(this)}>减</button>
+                <RichEditor ref='editor'/>
+                <div dangerouslySetInnerHTML={{__html: this.state.inhtml}}></div>
             </div>
         )
     }

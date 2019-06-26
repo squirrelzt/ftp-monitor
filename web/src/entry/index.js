@@ -8,6 +8,7 @@ import Upload from './../component/editor/upload';
 import AsynUpload from './../component/editor/asynupload';
 import AntUpload from './../component/editor/antupload';
 import RichEditor from './../component/editor/richEditor';
+import EditorDemo from './../component/editor/editordemo';
 import './../common/lib.js';
 
 function component() {
@@ -29,6 +30,7 @@ ReactDOM.render((
       <Route path="/antupload" component = { AntUpload } />
       <Route path="/richEditor" component = { RichEditor } />
       <Route path="/asynupload" component = { AsynUpload } />
+      <Route path="/editordemo" component = { EditorDemo } />
     </div>
   </Router>
 ),document.getElementById('root')

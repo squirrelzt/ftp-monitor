@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-// import InlineEditor from "@ckeditor/ckeditor5-build-inline";
-import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from "axios";
 import ImageCompressor from "image-compressor";
-import ajax from './../../common/ajax';
-import { func } from 'prop-types';
+import auth from './../../common/auth';
 class RichEditor extends Component {
     constructor(props) {
         super(props);      // 当父组件向子组件传递数据时，需要在这里传入props。
@@ -14,29 +11,6 @@ class RichEditor extends Component {
     }
     componentWillMount() { }
     componentDidMount() {
-        // var Pro = function (time) {
-        //     //返回一个Promise对象
-        //     return new Promise(function (resolve, reject) {
-        //         console.log('123');
-        //         //模拟接口调用
-        //         setTimeout(function () {
-        //             //这里告诉Promise 成功了，然后去执行then方法的第一个函数
-        //             resolve('成功返回');
-        //         }, time);
-        //     })
-        // };
-        // (function(){
-        //     console.log('start');
-        //     Pro(3000)
-        //     .then(function(data){
-        //         console.log("-------" +data);
-        //         return Pro(5000);})
-        //     .then(function(data){
-        //         console.log("========="+data);
-        //         console.log('end');
-        //     })
-        // })();
-
         class UploadAdapter {
             constructor(loader) {
                 this.loader = loader;
@@ -44,23 +18,6 @@ class RichEditor extends Component {
             // 上传图片方法   
             upload() {
                 let file = this.loader.file;
-                // let formData = new FormData();
-                // formData.append("file", file, file.name);
-                // let formConfig = {
-                //     headers: { "content-type": "multipart/form-data" }
-                // };
-                // console.log('--------------------');
-                // console.log(file);
-                // console.log(formData);
-                // file.then(function(result) {
-                //     // console.log
-                // })
-                // axios.post("http://127.0.0.1:8080/editor/uploadImage", formData, formConfig)
-                //             .then(response => {
-                //                 resolve({
-                //                     default: response.data.url
-                //                 });
-                //             });
                 return new Promise((resolve, reject) => {
                     let uploadImgMethod = (f) => {
                         const data = new FormData();
@@ -69,13 +26,10 @@ class RichEditor extends Component {
                         };
                         f.then(function(result){
                             data.append("file", result, result.name);
-                            console.log('++++++++++++++++++');
-                            console.log(data);
-                            console.log(result);
-                            axios.post("http://127.0.0.1:8080/editor/uploadImage", data, config)
+                            axios.post(auth.getPath() + "/editor/uploadImage", data, config)
                                 .then(response => {
                                     resolve({
-                                        default: response.url
+                                        default: response.data.url
                                     });
                                 });
                         });
@@ -103,24 +57,10 @@ class RichEditor extends Component {
         //初始化编辑器
         ClassicEditor.create(document.querySelector("#editor")).then(editor => {
             window.editor = editor;
-            const content = "请添加图文介绍";
+            const content = "";
             editor.editing.view.document.on(  //监听事件
                 "change:isFocused", (evt, name, value) => {
-                    //根据value  true获取焦点 false 失去焦点
-                    if (value) {
-                        // console.log('我获取了焦点')
-                    } else {
-                        // console.log('我失去了焦点')
-                        // console.log(this)
-                        if (this.aaaa === true) {
-                            let oP = document.createElement('p');
-                            let oBr = document.createElement('br');
-                            oBr.setAttribute("data-cke-filler", true);
-                            oP.appendChild(oBr)
-                            document.querySelector("#editor").appendChild(oP);
-                            this.aaaa = false;
-                        }
-                    }
+                    
                 }
             );
             // 转化html
@@ -147,7 +87,7 @@ class RichEditor extends Component {
     componentWillUnmount() { }
     render() {
         return (
-            <div name="content" id= "editor" key="file"> </div>
+            <div name="content" id= "editor"> </div>
         );
     }
 }

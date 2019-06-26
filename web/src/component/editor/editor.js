@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import auth from './../../common/auth';
-import ajax from './../../common/ajax';
 import './css/editor.css'
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -16,7 +15,6 @@ class Editor extends Component {
     }
     fetch(params = {}) {
         console.log(params);
-        // auth.fetch('/editor/uploadform','post',params,(result)=>{
         auth.fetch('/editor/uploadform','post',params,(result)=>{
             console.log("------------------");
             console.log(result);
