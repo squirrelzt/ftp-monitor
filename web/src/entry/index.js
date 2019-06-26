@@ -5,6 +5,10 @@ import Nav from './../component/nav/nav.js';
 import Ftp from './../component/ftp/ftp.js';
 import Editor from './../component/editor/editor.js';
 import Upload from './../component/editor/upload';
+import AsynUpload from './../component/editor/asynupload';
+import AntUpload from './../component/editor/antupload';
+import RichEditor from './../component/editor/richEditor';
+import './../common/lib.js';
 
 function component() {
   var element = document.createElement('pre');
@@ -22,6 +26,9 @@ ReactDOM.render((
       <Route path="/ftp" component = { Ftp } />
       <Route path="/editor" component = { Editor } />
       <Route path="/upload" component = { Upload } />
+      <Route path="/antupload" component = { AntUpload } />
+      <Route path="/richEditor" component = { RichEditor } />
+      <Route path="/asynupload" component = { AsynUpload } />
     </div>
   </Router>
 ),document.getElementById('root')

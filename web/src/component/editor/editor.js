@@ -31,6 +31,33 @@ class Editor extends Component {
         });
     };
 
+    fetchPromise(params = {}) {
+        console.log(params);
+        return new Promise((resolve, reject) => {
+            auth.fetch('/editor/uploadform','post',params,(result)=>{
+                console.log("------------------");
+                console.log(result);
+                resolve(result);
+                reject(result);
+                this.setState({
+                    resultData: result
+                });
+                if (this.state.resultData != '') {
+                    let element = document.createElement('article');
+                    element.innerHTML = this.state.resultData;
+                    document.body.appendChild(element);
+                }
+            });
+        }).then(data=>{
+            console.log('**********');
+            console.log(data);
+        }).catch(data=> {
+            console.log('&&&&&&&&&&&&&&');
+            console.log(data);
+        });
+    };
+
+
     componentWillMount(){
         
     };
@@ -45,7 +72,10 @@ class Editor extends Component {
     onSubmit() {
         // console.log('*****************');
         // console.log(this.state.data);
-        this.fetch({
+        // this.fetch({
+        //     content: this.state.data
+        // });
+        this.fetchPromise({
             content: this.state.data
         });
     }
@@ -70,8 +100,33 @@ class Editor extends Component {
                                 console.log('+++++++++++++++++');
                                 console.log(editor);
                                 console.log(loader.file);
-                                t.upload.bind(t);
-                            };
+                                // t.upload.bind(t);
+                                return new Promise((resolve, reject) => {
+                                    const data = new FormData();
+                                    data.append('upload', loader.file);
+                                    data.append('allowSize', 10);//允许图片上传的大小/兆
+                                    $.ajax({
+                                        url: 'http://localhost:8080/editor/loadImage',
+                                        type: 'POST',
+                                        data: data,
+                                        dataType: 'json',
+                                        processData: false,
+                                        contentType: false,
+                                        success: function (data) {
+                                            if (data.res) {
+                                                resolve({
+                                                    default: data.url
+                                                });
+                                            } else {
+                                                reject(data.msg);
+                                            }
+                        
+                                        }
+                                    });
+                                   
+                                });
+                            }
+                            
                         } }
                         onChange={ ( event, editor ) => {
                             const data = editor.getData();

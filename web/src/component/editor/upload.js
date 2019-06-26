@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 import auth from './../../common/auth';
 import ajax from './../../common/ajax';
 import './css/editor.css';
+import $ from "jquery";
 
 class Upload extends Component {
     constructor(props) {
@@ -25,6 +27,10 @@ class Upload extends Component {
         // this.fetch();
     };
 
+    onOk() {
+        console.log('----------------');
+        console.log($('.file-form').val());
+    }
     render() {
         return (
             <div className="monitor-frame">
