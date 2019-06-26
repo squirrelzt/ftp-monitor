@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from "axios";
+import ImageCompressor from "image-compressor";
 import ajax from './../../common/ajax';
 import { func } from 'prop-types';
 class RichEditor extends Component {
@@ -43,59 +44,59 @@ class RichEditor extends Component {
             // 上传图片方法   
             upload() {
                 let file = this.loader.file;
+                // let formData = new FormData();
+                // formData.append("file", file, file.name);
+                // let formConfig = {
+                //     headers: { "content-type": "multipart/form-data" }
+                // };
+                // console.log('--------------------');
+                // console.log(file);
+                // console.log(formData);
+                // file.then(function(result) {
+                //     // console.log
+                // })
+                // axios.post("http://127.0.0.1:8080/editor/uploadImage", formData, formConfig)
+                //             .then(response => {
+                //                 resolve({
+                //                     default: response.data.url
+                //                 });
+                //             });
                 return new Promise((resolve, reject) => {
-                    let uploadImgMethod = f => {
+                    let uploadImgMethod = (f) => {
                         const data = new FormData();
                         const config = {
                             headers: { "content-type": "multipart/form-data" }
                         };
-                        // f.key = "file";
-                        data.append("file", f, f.name);
-                        console.log('++++++++++++++++++');
-                        console.log(data);
-                        // console.log(file);
-                        console.log(f);
-                        axios.post('http://127.0.0.1:8080/editor/uploadImage',data,config)
-                        .then(response=>{
-                            console.log(response.data);
-                            resolve("调用成功: " + response);
-                            reject("调用失败: " + response);
+                        f.then(function(result){
+                            data.append("file", result, result.name);
+                            console.log('++++++++++++++++++');
+                            console.log(data);
+                            console.log(result);
+                            axios.post("http://127.0.0.1:8080/editor/uploadImage", data, config)
+                                .then(response => {
+                                    resolve({
+                                        default: response.url
+                                    });
+                                });
                         });
-                        // ajax.axiosRequest('/editor/uploadImage','post',data,(result)=>{
-                        //     console.log("------------------");
-                        //     console.log(result);
-                        //     resolve("调用成功: " + response);
-                        //     reject("调用失败: " + response);
-                        // });
-                        // axios.post("http://127.0.0.1:8080/editor/uploadImage", data, config)
-                        //     .then(response => {
-                        //         resolve({
-                        //             default: response.data.url
-                        //         });
-                        //         reject("调用失败: " + response);
-                        //     });
+                        
                     };
                     // 如果图片过大压缩图片{https://www.imooc.com/article/40038}
                     let maxSize = 100 * 1024; //显示图片最大为100k
                     let imgSize = file.size;  //获取当前图片的大小
-                    // if (imgSize > maxSize) {
-                    //     let radio = maxSize / imgSize; //设置压缩率
-                    //     // file:（可选）压缩的目标图像文件，类型是 File 或者 Blob
-                    //     new ImageCompressor(file, {
-                    //         quality: radio,        // 输出图像的画质，类型是 number。默认值是 undefined。值是0到1之间的数字。
-                    //         convertSize: 1000000,  // 输出图像的文件类型，类型是 number。默认值是 5000000 (5MB)。
-                    //         success(newFile) {
-                    //             uploadImgMethod(newFile);
-                    //         }
-                    //     });
-                    // } else {
-                    //     uploadImgMethod(file);
-                    // }
-                    uploadImgMethod(file);
-                }).then(function(r) {
-                    console.log("Done: " + r);
-                }).catch(function(reason) {
-                    console.log("failed: " + reason);
+                    if (imgSize > maxSize) {
+                        let radio = maxSize / imgSize; //设置压缩率
+                        // file:（可选）压缩的目标图像文件，类型是 File 或者 Blob
+                        new ImageCompressor(file, {
+                            quality: radio,        // 输出图像的画质，类型是 number。默认值是 undefined。值是0到1之间的数字。
+                            convertSize: 1000000,  // 输出图像的文件类型，类型是 number。默认值是 5000000 (5MB)。
+                            success(newFile) {
+                                uploadImgMethod(newFile);
+                            }
+                        });
+                    } else {
+                        uploadImgMethod(file);
+                    }
                 });
             }
         }

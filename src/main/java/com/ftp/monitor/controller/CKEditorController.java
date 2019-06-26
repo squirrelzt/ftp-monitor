@@ -30,7 +30,7 @@ public class CKEditorController {
     }
 
     @RequestMapping("/uploadImage")
-    public CkEditorUploadVO uploadImage(@RequestParam("file") MultipartFile file) {
+    public CkEditorUploadVO uploadImage(@RequestBody MultipartFile file) {
         CkEditorUploadVO vo = new CkEditorUploadVO();
         try {
             String filename = file.getOriginalFilename();
