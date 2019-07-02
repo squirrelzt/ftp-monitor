@@ -37,3 +37,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+.ck-editor__editable { 
+    min-height: 200px;
+    /* max-width: 100%; */
+}

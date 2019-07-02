@@ -35,6 +35,7 @@ public class CKEditorController {
         try {
             String filename = file.getOriginalFilename();
             String path = ResourceUtils.getURL("").getPath() + File.separator + uploadPath + File.separator + filename;
+//            String path = ResourceUtils.getURL("").getPath() + "src/main/resources/static/" + filename;
             File dest = new File(path);
             file.transferTo(dest);
             vo.setUploaded(Boolean.TRUE);

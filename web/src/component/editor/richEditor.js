@@ -3,6 +3,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from "axios";
 import ImageCompressor from "image-compressor";
 import auth from './../../common/auth';
+import './css/editordemo.css';
 class RichEditor extends Component {
     constructor(props) {
         super(props);      // 当父组件向子组件传递数据时，需要在这里传入props。
@@ -55,7 +56,20 @@ class RichEditor extends Component {
             }
         }
         //初始化编辑器
-        ClassicEditor.create(document.querySelector("#editor")).then(editor => {
+        ClassicEditor.create(document.querySelector("#editor"),{
+            image: {
+                toolbar: [ 'imageTextAlternative' ],
+                colors: [ {
+                    color: 'hsl(0, 0%, 0%)',
+                    label: 'Black'
+                }],
+                styles: [
+                    {
+                        className:'one111'
+                    }
+                ]
+            }
+        }).then(editor => {
             window.editor = editor;
             const content = "";
             editor.editing.view.document.on(  //监听事件
@@ -76,6 +90,8 @@ class RichEditor extends Component {
                 // this.aaaa = true;
                 return new UploadAdapter(loader);
             };
+            // editor.config.maxSize=10%
+            // editor.addCss('img{width:10%}')
         })
             .catch(error => {
                 console.error(error);
