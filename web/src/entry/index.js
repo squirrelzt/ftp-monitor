@@ -10,6 +10,7 @@ import AntUpload from './../component/editor/antupload';
 import RichEditor from './../component/editor/richEditor';
 import EditorDemo from './../component/editor/editordemo';
 import PureComponentDemo from './../component/useage/PureComponentDemo';
+import PicturesWall from './../component/pictureswall/PicturesWall';
 import './../common/lib.js';
 
 function component() {
@@ -33,6 +34,7 @@ ReactDOM.render((
       <Route path="/asynupload" component = { AsynUpload } />
       <Route path="/editordemo" component = { EditorDemo } />
       <Route path="/purecomponent" component = { PureComponentDemo } />
+      <Route path="/pictureswall" component = { PicturesWall } />
     </div>
   </Router>
 ),document.getElementById('root')
