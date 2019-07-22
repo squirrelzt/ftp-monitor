@@ -1,8 +1,12 @@
 package com.ftp.monitor.common;
 
+import com.sun.deploy.net.HttpUtils;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -22,10 +26,17 @@ public class CorsFilter implements Filter {
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
       throws IOException, ServletException {
     HttpServletResponse response = (HttpServletResponse) res;
+    HttpServletRequest request = (HttpServletRequest)req;
     response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+    response.setHeader("Access-Control-Allow-Headers", "x-requested-with, token");
+    if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
+      response.setStatus(HttpStatus.OK.value());
+      return;
+    }
     chain.doFilter(req, res);
     Map map = new HashMap();
+    String token = request.getHeader("token");
+    System.out.println(token);
     Enumeration paramNames = req.getParameterNames();
     while (paramNames.hasMoreElements()) {
       String paramName = (String) paramNames.nextElement();
