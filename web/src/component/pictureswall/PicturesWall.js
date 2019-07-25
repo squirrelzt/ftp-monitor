@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import auth from './../../common/auth';
 import { Button, Upload } from 'antd';
+import './css/PicturesWall.css';
 
 class PicturesWall extends Component {
     constructor(props) {
@@ -69,7 +70,7 @@ class PicturesWall extends Component {
         defaultFileList: [...this.state.fileList],
       };
         return (
-            <div className="pictures-wall-container" >
+            <div id="pictures-wall-container" >
               <Upload  
               listType="picture-card"
               fileList={this.state.fileList}

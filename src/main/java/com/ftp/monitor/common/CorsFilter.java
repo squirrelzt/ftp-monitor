@@ -28,15 +28,13 @@ public class CorsFilter implements Filter {
     HttpServletResponse response = (HttpServletResponse) res;
     HttpServletRequest request = (HttpServletRequest)req;
     response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Headers", "x-requested-with, token");
+    response.setHeader("Access-Control-Allow-Headers", "x-requested-with, content-type, token");
     if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
       response.setStatus(HttpStatus.OK.value());
       return;
     }
     chain.doFilter(req, res);
     Map map = new HashMap();
-    String token = request.getHeader("token");
-    System.out.println(token);
     Enumeration paramNames = req.getParameterNames();
     while (paramNames.hasMoreElements()) {
       String paramName = (String) paramNames.nextElement();

@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.editor-section {
+    float: left;
+    width: 50%;
+    border: 1px solid #e5e5e5;
+}
+.editor-content {
+    /* width: 80%; */
+    margin-left: auto;
+    margin-right: auto;
+}
+.editor-content .title {
+    text-align: center;
+    font-size: 24px;
+    color: #b8b8b8;
+}
+.demo-content .title {
+    text-align: center;
+    font-size: 24px;
+    color: #b8b8b8;
+}
+.demo-section {
+    width: 50%;
+    float: left;
+    border: 1px solid #e5e5e5;
+}
+.editor-section .rich-editor {
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.editor-section .upload-btn {
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ck-editor__editable { 
+    min-height: 200px;
+    /* max-width: 100%; */
+}
+figure img {
+    /* display: none; */
+}

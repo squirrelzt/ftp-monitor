@@ -1,0 +1,10 @@
+#pictures-wall-container {
+    width: 300px;
+    margin: 0 auto; 
+}
+ #pictures-wall-container .ant-upload-list-item {
+    width: 200px !important;
+    height: 200px !important;
+    /* float: center; */
+    margin: 0 auto !important;
+}
