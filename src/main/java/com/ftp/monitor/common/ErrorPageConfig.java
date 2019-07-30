@@ -21,6 +21,8 @@ public class ErrorPageConfig {
         return (factory -> {
             ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, "/index.html");
             factory.addErrorPages(errorPage404);
+            ErrorPage unauthorizedPage401 = new ErrorPage(HttpStatus.UNAUTHORIZED, "/index.html");
+            factory.addErrorPages(unauthorizedPage401);
         });
     }
 }
