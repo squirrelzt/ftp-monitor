@@ -13,6 +13,7 @@ import PureComponentDemo from './../component/useage/PureComponentDemo';
 import PicturesWall from './../component/pictureswall/PicturesWall';
 import EditorPicturesWall from './../component/editor/EditorPicturesWall';
 import DynamicForm from './../component/dynamicform/DynamicForm';
+import Hoc from '../component/hoc/Hoc';
 import './../common/lib.js';
 
 function component() {
@@ -39,6 +40,7 @@ ReactDOM.render((
       <Route path="/pictureswall" component = { PicturesWall } />
       <Route path="/editorPicturesWall" component = { EditorPicturesWall } />
       <Route path="/dynamicform" component = { DynamicForm } />
+      <Route path="/hoc" component = { Hoc } />
     </div>
   </Router>
 ),document.getElementById('root')
