@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import MyComponent from './MyComponent'
 
-const animals = [
-    { name: "Tiger", value: "tiger" },
-    { name: "Elephant", value: "elephant" },
-    { name: "Cow", value: "cow" }
-  ];
+const ClassNameWrapper = ({ children }) => children('demo-class')
+
+const HeadWithClass = (props) => (
+    <ClassNameWrapper>
+      {(clazz) => <header className={clazz} >demo-class</header>}
+    </ClassNameWrapper>
+  )
 
 export default class FuncSubComponent extends Component {
     constructor(props) {
@@ -14,13 +16,14 @@ export default class FuncSubComponent extends Component {
     render() {
         return (
             <div>
-                <span>function sub component</span>
+                <span>函数子组件FaCC</span>
                 <MyComponent value="hello">
                     {(name) => (
                         <div>{name}</div>
                     )
                     }
                 </MyComponent>
+                <HeadWithClass/>
             </div>
         )
     }
