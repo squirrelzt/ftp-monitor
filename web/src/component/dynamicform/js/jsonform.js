@@ -657,7 +657,7 @@ jsonform.elementTypes = {
       '<input type="hidden" name="<%= node.name %>" id="<%= node.id %>" value="<%= value %>" />' +
       '<div class="dropdown">' +
       '<a class="btn<% if (buttonClass && node.value) { %> <%= buttonClass %><% } else { %> btn-default<% } %>" data-toggle="dropdown" href="#"<% if (node.value) { %> style="max-width:<%= width %>px;max-height:<%= height %>px"<% } %>>' +
-        '<% if (node.value) { %><img src="<% if (!node.value.match(/^https?:/)) { %><%= prefix %><% } %><%= node.value %><%= suffix %>" alt="" /><% } else { %><%= buttonTitle %><% } %>' +
+        '<% if (node.value) { %> src="<% if (!node.value.match(/^https?:/)) { %><%= prefix %><% } %><%= node.value %><%= suffix %>" alt="" /><% } else { %><%= buttonTitle %><% } %>' +
       '</a>' +
       '<div class="dropdown-menu navbar" id="<%= node.id %>_dropdown">' +
         '<div>' +
