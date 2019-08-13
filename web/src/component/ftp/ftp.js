@@ -27,7 +27,7 @@ class Ftp extends Component {
         })
     };
 
-    componentWillMount(){
+    componentDidMount(){
         this.fetch();
     };
 

@@ -9,7 +9,7 @@ export default (WrappedComponent) => {
             }
         }
 
-        componentWillMount() {
+        componentDidMount() {
             let username = localStorage.getItem('username');
             this.setState({
                 username: username

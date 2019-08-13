@@ -23,7 +23,7 @@ class Upload extends Component {
       
     };
 
-    componentWillMount(){
+    componentDidMount(){
         // this.fetch();
     };
 

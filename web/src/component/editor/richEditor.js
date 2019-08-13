@@ -10,7 +10,6 @@ class RichEditor extends Component {
         this.state = {     // 通过state来定义当前组件内部自己的数据
         };
     }
-    componentWillMount() { }
     componentDidMount() {
         class UploadAdapter {
             constructor(loader) {

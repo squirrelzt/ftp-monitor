@@ -19,7 +19,7 @@ class AsynUpload extends Component {
         console.log('==========================');
         console.log(this.refs.editor.getData());
     }
-    componentWillMount(){
+    componentDidMount(){
     };
 
     update(e) {

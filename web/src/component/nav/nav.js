@@ -8,7 +8,7 @@ class Nav extends Component {
         
     }
 
-    componentWillMount(){}
+    componentDidMount(){}
 
     render() {
         const context = this.props.children;

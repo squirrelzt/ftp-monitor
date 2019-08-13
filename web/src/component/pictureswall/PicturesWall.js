@@ -25,7 +25,7 @@ class PicturesWall extends Component {
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
 
     }
     handleChange = (evt) => {

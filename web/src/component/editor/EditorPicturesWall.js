@@ -93,7 +93,7 @@ class EditorPicturesWall extends Component {
         //     console.log(imgUrl);
         // });
     }
-    componentWillMount(){
+    componentDidMount(){
     };
     handleChange = (evt) => {
         // console.log('-----------------');

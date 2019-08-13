@@ -15,7 +15,7 @@ class DynamicForm extends Component {
         };
     }
 
-    componentWillMount(){
+    componentDidMount(){
         // this.fetch();
     };
 
