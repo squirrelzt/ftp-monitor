@@ -16,6 +16,7 @@ import DynamicForm from './../component/dynamicform/DynamicForm';
 import Hoc from '../component/hoc/Hoc';
 import FuncSubComponent from '../component/funcsubcomponent/FuncSubComponent';
 import AdvancedTabSelectorSample from '../component/funcsubcomponent/AdvancedTabSelector';
+import WebSocket from '../component/websocket/WebSocket';
 import './../common/lib.js';
 
 function component() {
@@ -45,6 +46,7 @@ ReactDOM.render((
       <Route path="/hoc" component = { Hoc } />
       <Route path="/facc" component = { FuncSubComponent } />
       <Route path="/facc1" component = { AdvancedTabSelectorSample } />
+      <Route path="/websocket" component = { WebSocket } />
     </div>
   </Router>
 ),document.getElementById('root')

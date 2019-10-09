@@ -30,6 +30,7 @@
     "react-jsonschema-form": "^1.7.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-websocket": "^2.0.1",
     "reqwest": "^2.0.5",
     "serve-favicon": "^2.5.0"
   },
